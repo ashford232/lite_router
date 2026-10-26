@@ -3,6 +3,8 @@ name: lite_router
 description: A lightweight, context-free navigation helper for Flutter.
 version: 0.1.0
 
+homepage: https://github.com/ashford232/lite_router
+repository: https://github.com/ashford232/lite_router
 environment:
   sdk: ^3.12.0
   flutter: '>=3.24.0'
