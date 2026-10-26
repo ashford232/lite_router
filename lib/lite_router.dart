@@ -4,3 +4,5 @@
 library lite_router;
 
 export 'src/lite_router.dart';
+export 'src/lite_transition.dart';
+export 'src/lite_router_context.dart';
