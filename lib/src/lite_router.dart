@@ -1,12 +1,14 @@
-
 import 'package:flutter/material.dart';
 
 typedef AppPageBuilder = Widget Function(BuildContext context);
 
+/// A lightweight router for navigating between Flutter pages.
 class LiteRouter {
+  /// Creates a router with an optional custom navigator key.
   LiteRouter({GlobalKey<NavigatorState>? navigatorKey})
-      : navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
+    : navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
 
+  /// The key used to access the app's root navigator.
   final GlobalKey<NavigatorState> navigatorKey;
 
   NavigatorState get _navigator {
@@ -23,9 +25,7 @@ class LiteRouter {
   }
 
   Route<T> _route<T extends Object?>(Widget page) {
-    return MaterialPageRoute<T>(
-      builder: (_) => page,
-    );
+    return MaterialPageRoute<T>(builder: (_) => page);
   }
 
   /// Push a page onto the navigation stack.
@@ -35,17 +35,12 @@ class LiteRouter {
 
   /// Replace the current page.
   Future<T?> replace<T extends Object?>(Widget page) {
-    return _navigator.pushReplacement<T, Object?>(
-      _route<T>(page),
-    );
+    return _navigator.pushReplacement<T, Object?>(_route<T>(page));
   }
 
   /// Clear the navigation stack and open a new page.
   Future<T?> to<T extends Object?>(Widget page) {
-    return _navigator.pushAndRemoveUntil<T>(
-      _route<T>(page),
-      (_) => false,
-    );
+    return _navigator.pushAndRemoveUntil<T>(_route<T>(page), (_) => false);
   }
 
   /// Pop the current page and optionally return a result.
